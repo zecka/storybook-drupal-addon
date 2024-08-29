@@ -16,7 +16,11 @@ export const detachDrupalBehaviors = (
   useEffect(()=>{
     if(typeof Drupal !== 'undefined' && Drupal.behaviors) {
         Object.keys(Drupal.behaviors).forEach(key => {
-            Drupal.behaviors[key].detach();
+            try{
+              Drupal.behaviors[key].detach?.();
+            }catch(e){
+              console.error(`Error detaching behavior: ${key}`, e);
+            }
         });
     }
   }, []);
