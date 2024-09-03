@@ -67,7 +67,7 @@ const fetchStoryHtml = async (
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(params),
+    body: JSON.stringify(context.args),
   });
   const htmlContents = await response.text();
   if (response.status >= 399) {
